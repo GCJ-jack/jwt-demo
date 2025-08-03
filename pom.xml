@@ -42,11 +42,7 @@
             <optional>true</optional>
         </dependency>
         <!--swagger3 生成接口注释-->
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-boot-starter</artifactId>
-            <version>3.0.0</version>
-        </dependency>
+
         <!-- 解决jdk11缺失jar包引起的报错-->
 
         <!-- jwt token核心依赖-->
