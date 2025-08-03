@@ -4,6 +4,7 @@ import com.itheima.jwt.entity.JwtUser;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
 import lombok.extern.slf4j.Slf4j;
 
 import java.nio.charset.StandardCharsets;
@@ -13,7 +14,7 @@ import java.util.Date;
 @Slf4j
 public class TokenProvider {
 
-    private static final String SALT_KEY = "links";
+    private static final String SALT_KEY = "ThisIsASecretKeyThatIsLongEnoughToBeUsedWithHS512AlgorithmAndShouldBeAtLeast64Bytes";
 
     private static final long TOKEN_VALIDITY = 86400000;
 
@@ -33,7 +34,7 @@ public class TokenProvider {
                 // 代表这个JWT的接收对象
                 .claim("role", role)
                 .claim("userId",userId)
-                .signWith(SignatureAlgorithm.HS512,SECRET_KEY)
+                .signWith(Keys.hmacShaKeyFor(SECRET_KEY.getBytes(StandardCharsets.UTF_8)), SignatureAlgorithm.HS512)
                 .setExpiration(validity)
                 .compact();
     }

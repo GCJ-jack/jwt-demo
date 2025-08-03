@@ -46,11 +46,29 @@
         <!-- 解决jdk11缺失jar包引起的报错-->
 
         <!-- jwt token核心依赖-->
+        <!-- JJWT API -->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt</artifactId>
-            <version>0.9.1</version>
+            <artifactId>jjwt-api</artifactId>
+            <version>0.11.5</version>
         </dependency>
+
+        <!-- JJWT 实现（需要放在 runtime） -->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-impl</artifactId>
+            <version>0.11.5</version>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- JJWT 的 JSON 支持（用 Jackson 作为序列化器） -->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-jackson</artifactId>
+            <version>0.11.5</version>
+            <scope>runtime</scope>
+        </dependency>
+
         <!-- jwt token核心依赖-->
         <dependency>
             <groupId>com.auth0</groupId>
