@@ -36,7 +36,6 @@ public class TokenProvider {
                 .signWith(SignatureAlgorithm.HS512,SECRET_KEY)
                 .setExpiration(validity)
                 .compact();
-
     }
 
     public static JwtUser checkToken(String token){
@@ -57,7 +56,7 @@ public class TokenProvider {
     private static boolean validateToken(String authToken){
         try{
             Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(authToken);
-            return  true;
+            return true;
         }catch (Exception e){
             log.error("无效的token: " + authToken);
         }
