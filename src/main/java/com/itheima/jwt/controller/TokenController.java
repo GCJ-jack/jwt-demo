@@ -1,6 +1,7 @@
 package com.itheima.jwt.controller;
 
 import com.itheima.jwt.entity.JwtUser;
+import com.itheima.jwt.util.AuthStorage;
 import com.itheima.jwt.util.PasswordEncoder;
 import com.itheima.jwt.util.TokenProvider;
 import lombok.Getter;
@@ -32,6 +33,13 @@ public class TokenController {
     @GetMapping("/token/validate")
     public JwtUser tokenValidate(String token){
         return TokenProvider.checkToken(token);
+    }
+
+    @GetMapping("/get/Info")
+    public String getInfo() {
+        // 从全局环境中获取用户id
+        JwtUser user = AuthStorage.getUser();
+        return "用户："+user.getUserId() + "，请求成功";
     }
 
 }
